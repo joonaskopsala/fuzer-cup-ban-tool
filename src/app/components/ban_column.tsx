@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Radio, Stack, Tooltip } from '@mui/material'
+import { Box, IconButton, Radio, Stack, Tooltip } from '@mui/material'
 import { Dispatch, SetStateAction, useState } from 'react'
 import Image from 'next/image'
 import { PlaceholderImage } from './Placeholder'

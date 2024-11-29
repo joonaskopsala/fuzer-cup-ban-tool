@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import type { Hero } from '../util/entity'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
