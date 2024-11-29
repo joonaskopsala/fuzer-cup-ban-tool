@@ -132,7 +132,6 @@ const Banslot = ({
             }}
             onLoad={() => setImageLoaded(true)}
           />
-          {/* Red line overlay */}
           {imageLoaded && (
             <Box
               sx={{

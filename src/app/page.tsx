@@ -1,10 +1,11 @@
 'use client'
 
-import { Button, Container, Stack, Typography } from '@mui/material'
+import { Button, Container, Stack, Tooltip, Typography } from '@mui/material'
 import dota2Heroes from './resources/dota2_heroes.json'
 import { Hero } from './components/hero'
 import { Bancolumn } from './components/ban_column'
 import { useEffect, useState } from 'react'
+import SquareIcon from '@mui/icons-material/Square'
 
 export default function Page() {
   useEffect(() => {
@@ -31,6 +32,15 @@ export default function Page() {
     setGame2Bans([])
   }
 
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText('#676767')
+      alert('Background color copied to clipboard!')
+    } catch (error) {
+      console.error('Failed to copy to clipboard:', error)
+    }
+  }
+
   return (
     <Container
       sx={{
@@ -51,33 +61,56 @@ export default function Page() {
         >
           {'Fuzer cup ban tool'}
         </Typography>
-        <Stack
-          width={'100vw'}
-          direction="row"
-          gap={2}
-          justifyContent="space-between"
-        >
-          <Stack direction="row" gap={8} marginLeft={5}>
-            <Bancolumn
-              game={1}
-              bans={game1Bans}
-              setActiveGame={setActiveGame}
-              activeGame={activeGame}
-              setGame1Bans={setGame1Bans}
-              game1Bans={game1Bans}
-              setGame2Bans={setGame2Bans}
-              game2Bans={game2Bans}
-            />
-            <Bancolumn
-              game={2}
-              bans={game2Bans}
-              setActiveGame={setActiveGame}
-              activeGame={activeGame}
-              setGame1Bans={setGame1Bans}
-              game1Bans={game1Bans}
-              setGame2Bans={setGame2Bans}
-              game2Bans={game2Bans}
-            />
+        <Stack width={'100vw'} direction="row" gap={6} justifyContent="center">
+          <Stack spacing={2}>
+            <Stack direction="row" gap={8} marginLeft={5}>
+              <Bancolumn
+                game={1}
+                bans={game1Bans}
+                setActiveGame={setActiveGame}
+                activeGame={activeGame}
+                setGame1Bans={setGame1Bans}
+                game1Bans={game1Bans}
+                setGame2Bans={setGame2Bans}
+                game2Bans={game2Bans}
+              />
+              <Bancolumn
+                game={2}
+                bans={game2Bans}
+                setActiveGame={setActiveGame}
+                activeGame={activeGame}
+                setGame1Bans={setGame1Bans}
+                game1Bans={game1Bans}
+                setGame2Bans={setGame2Bans}
+                game2Bans={game2Bans}
+              />
+            </Stack>
+            <Stack
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              spacing={1}
+              paddingTop={2}
+            >
+              <Typography variant="body2" color="whitesmoke" fontWeight="bold">
+                {'Background Color:'}
+              </Typography>
+              <Tooltip title={'Click to copy background color for OBS'}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  startIcon={<SquareIcon sx={{ color: '#676767' }} />}
+                  onClick={copyToClipboard}
+                  sx={{
+                    backgroundColor: 'whitesmoke',
+                    color: 'black',
+                    fontWeight: 'bold'
+                  }}
+                >
+                  {'#676767'}
+                </Button>
+              </Tooltip>
+            </Stack>
           </Stack>
           <Stack
             direction="row"
