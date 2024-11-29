@@ -14,8 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body
         style={{
           margin: 0,
-          padding: 0,
-          width: '100vw'
+          padding: 0
         }}
       >
         <ThemeProvider theme={theme}>
@@ -25,8 +24,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             sx={{
               width: '100vw',
               padding: 0,
-              marginLeft: 2,
-              marginRight: 2,
               display: 'flex',
               justifyContent: 'center'
             }}

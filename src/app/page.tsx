@@ -49,11 +49,10 @@ export default function Page() {
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        justifyContent: 'space-between'
       }}
     >
-      <Stack alignItems="center" sx={{ flexGrow: 1 }}>
+      <Stack alignItems="center" sx={{ flexGrow: 1, marginTop: '1rem' }}>
         <Stack direction="row" spacing={2} alignItems="center">
           <Typography
             variant="h4"
