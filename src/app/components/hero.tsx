@@ -3,7 +3,6 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import type { Hero } from '../util/entity'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
-import CircularProgress from '@mui/material/CircularProgress'
 import { Skeleton } from '@mui/material'
 
 const Hero = ({

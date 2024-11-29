@@ -1,5 +1,5 @@
 import { Box, IconButton, Radio, Stack, Tooltip } from '@mui/material'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import Image from 'next/image'
 import { PlaceholderImage } from './Placeholder'
 import { Close as CloseIcon } from '@mui/icons-material'
