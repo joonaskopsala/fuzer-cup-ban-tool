@@ -1,8 +1,10 @@
 import Image from 'next/image'
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import type { Hero } from '../util/entity'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
+import CircularProgress from '@mui/material/CircularProgress'
+import { Skeleton } from '@mui/material'
 
 const Hero = ({
   hero,
@@ -19,6 +21,8 @@ const Hero = ({
   game2Bans: number[]
   setGame2Bans: Dispatch<SetStateAction<number[]>>
 }) => {
+  const [isLoading, setIsLoading] = useState(true)
+
   const isBanned =
     game1Bans.findIndex(b => b === hero.id) != -1 ||
     game2Bans.findIndex(b => b === hero.id) != -1
@@ -58,18 +62,35 @@ const Hero = ({
           justifyContent: 'center'
         }}
       >
+        {isLoading && (
+          <Skeleton
+            variant="rectangular"
+            width={90}
+            height={50}
+            sx={{
+              position: 'absolute',
+              zIndex: 3,
+              borderRadius: '0.3rem'
+            }}
+          />
+        )}
         <Image
           width={90}
           height={50}
           src={hero.image}
           alt={hero.name}
+          onLoad={() => setIsLoading(false)}
           style={{
             position: 'absolute',
             inset: 0,
             objectFit: 'cover',
             zIndex: isBanned ? 1 : 0,
             filter: isBanned ? 'blur(3px)' : 'none',
-            transition: 'filter 0.5s ease'
+            transition: 'filter 0.5s ease',
+            borderRadius: '0.3rem',
+            opacity: isLoading ? 0 : 1,
+            transitionProperty: 'filter, opacity',
+            transitionDuration: '0.5s'
           }}
         />
         {isBanned && (
@@ -78,8 +99,8 @@ const Hero = ({
               position: 'absolute',
               inset: 0,
               backgroundColor: 'rgba(255, 0, 0, 0.329)',
-              transition: 'filter 0.5s ease',
-              zIndex: 2
+              zIndex: 2,
+              borderRadius: '0.3rem'
             }}
           />
         )}

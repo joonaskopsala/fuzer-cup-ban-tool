@@ -6,7 +6,7 @@ const PlaceholderImage = () => {
       sx={{
         width: 90,
         height: 50,
-        backgroundColor: '#ccc',
+        backgroundColor: 'whitesmoke',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
