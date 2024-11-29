@@ -8,6 +8,9 @@ import theme from './theme'
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <title>Fuzer Cup Ban Tool</title>
+      </head>
       <body
         style={{
           margin: 0,

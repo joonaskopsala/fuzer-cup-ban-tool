@@ -6,6 +6,8 @@ import { Hero } from './components/hero'
 import { Bancolumn } from './components/ban_column'
 import { useEffect, useState } from 'react'
 import SquareIcon from '@mui/icons-material/Square'
+import Image from 'next/image'
+import Fuzer from '/public/fuzer.png'
 
 export default function Page() {
   useEffect(() => {
@@ -52,15 +54,18 @@ export default function Page() {
       }}
     >
       <Stack alignItems="center" sx={{ flexGrow: 1 }}>
-        <Typography
-          variant="h4"
-          textAlign="center"
-          color="whitesmoke"
-          sx={{ textShadow: 5 }}
-          gutterBottom
-        >
-          {'Fuzer cup ban tool'}
-        </Typography>
+        <Stack direction="row" spacing={2} alignItems="center">
+          <Typography
+            variant="h4"
+            textAlign="center"
+            color="whitesmoke"
+            sx={{ textShadow: 5 }}
+            gutterBottom
+          >
+            {'Fuzer Cup Ban Tool'}
+          </Typography>
+          <Image alt="fuzer" src={Fuzer} width={40} height={40} />
+        </Stack>
         <Stack width={'100vw'} direction="row" gap={6} justifyContent="center">
           <Stack spacing={2}>
             <Stack direction="row" gap={8} marginLeft={5}>
