@@ -13,7 +13,8 @@ const Bancolumn = ({
   game1Bans,
   setGame1Bans,
   game2Bans,
-  setGame2Bans
+  setGame2Bans,
+  bgTransparency
 }: {
   game: number
   bans: number[]
@@ -23,6 +24,7 @@ const Bancolumn = ({
   setGame1Bans: Dispatch<SetStateAction<number[]>>
   game2Bans: number[]
   setGame2Bans: Dispatch<SetStateAction<number[]>>
+  bgTransparency: boolean
 }) => {
   const banSlots = 10
 
@@ -47,7 +49,9 @@ const Bancolumn = ({
       </Tooltip>
       <Stack
         sx={{
-          background: 'linear-gradient(180deg,#6e0000,#330000)',
+          background: bgTransparency
+            ? 'transparent'
+            : 'linear-gradient(180deg,#6e0000,#330000)',
           borderRadius: '0.6rem'
         }}
         width={120}

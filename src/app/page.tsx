@@ -28,10 +28,12 @@ export default function Page() {
   const [game1Bans, setGame1Bans] = useState([] as number[])
   const [game2Bans, setGame2Bans] = useState([] as number[])
   const [activeGame, setActiveGame] = useState<number>(1)
+  const [transparentBg, setTransparentBg] = useState<boolean>(false)
 
   const clearAll = () => {
     setGame1Bans([])
     setGame2Bans([])
+    setBanColumnKey(banColumnKey + 1)
   }
 
   const copyToClipboard = async () => {
@@ -42,6 +44,12 @@ export default function Page() {
       console.error('Failed to copy to clipboard:', error)
     }
   }
+
+  const removeBarBgs = () => {
+    setTransparentBg(!transparentBg)
+  }
+
+  const [banColumnKey, setBanColumnKey] = useState<number>(1) //use this to force react to reload component after we clear all
 
   return (
     <Container
@@ -69,6 +77,7 @@ export default function Page() {
           <Stack spacing={2}>
             <Stack direction="row" gap={8} marginLeft={5}>
               <Bancolumn
+                key={banColumnKey}
                 game={1}
                 bans={game1Bans}
                 setActiveGame={setActiveGame}
@@ -77,8 +86,10 @@ export default function Page() {
                 game1Bans={game1Bans}
                 setGame2Bans={setGame2Bans}
                 game2Bans={game2Bans}
+                bgTransparency={transparentBg}
               />
               <Bancolumn
+                key={banColumnKey + 69}
                 game={2}
                 bans={game2Bans}
                 setActiveGame={setActiveGame}
@@ -87,6 +98,7 @@ export default function Page() {
                 game1Bans={game1Bans}
                 setGame2Bans={setGame2Bans}
                 game2Bans={game2Bans}
+                bgTransparency={transparentBg}
               />
             </Stack>
             <Stack
@@ -115,13 +127,33 @@ export default function Page() {
                 </Button>
               </Tooltip>
             </Stack>
+            <Stack
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              spacing={1}
+              paddingTop={0}
+            >
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={removeBarBgs}
+                sx={{
+                  backgroundColor: 'whitesmoke',
+                  color: 'black',
+                  fontWeight: 'bold'
+                }}
+              >
+                {'Remove backgrounds from bars'}
+              </Button>
+            </Stack>
           </Stack>
           <Stack
             direction="row"
             sx={{
               width: '80%',
               flexWrap: 'wrap',
-              height: '100%',
+              height: '90%',
               gap: 1,
               alignItems: 'flex-start',
               marginTop: '2rem'
