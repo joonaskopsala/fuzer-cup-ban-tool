@@ -28,12 +28,16 @@ const Hero = ({
 
   const handleClick = () => {
     if (activeGame === 1) {
-      if (game1Bans.length < 10) {
+      if (isBanned) {
+        setGame1Bans(game1Bans.filter(b => b !== hero.id))
+      } else if (game1Bans.length < 10) {
         const newBans = [...game1Bans, hero.id]
         setGame1Bans(newBans)
       }
     } else {
-      if (game2Bans.length < 10) {
+      if (isBanned) {
+        setGame2Bans(game2Bans.filter(b => b !== hero.id))
+      } else if (game2Bans.length < 10) {
         const newBans = [...game2Bans, hero.id]
         setGame2Bans(newBans)
       }
@@ -43,11 +47,11 @@ const Hero = ({
   return (
     <Button
       onClick={handleClick}
-      disabled={isBanned}
       sx={{
         position: 'relative',
-        cursor: isBanned ? 'default' : 'pointer',
-        p: 0
+        cursor: 'pointer',
+        p: 0,
+        boxShadow: 10
       }}
     >
       <Box
@@ -86,7 +90,7 @@ const Hero = ({
             zIndex: isBanned ? 1 : 0,
             filter: isBanned ? 'blur(3px)' : 'none',
             transition: 'filter 0.5s ease',
-            borderRadius: '0.3rem',
+            borderRadius: '0.4rem',
             opacity: isLoading ? 0 : 1,
             transitionProperty: 'filter, opacity',
             transitionDuration: '0.5s'
@@ -99,7 +103,7 @@ const Hero = ({
               inset: 0,
               backgroundColor: 'rgba(255, 0, 0, 0.329)',
               zIndex: 2,
-              borderRadius: '0.3rem'
+              borderRadius: '0.4rem'
             }}
           />
         )}

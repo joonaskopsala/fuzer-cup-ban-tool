@@ -69,7 +69,7 @@ export default function Page() {
             sx={{ textShadow: 5 }}
             gutterBottom
           >
-            {'Fuzer Cup Ban Tool'}
+            {'Fuzer Cup Fearless Ban Tool'}
           </Typography>
           <Image alt="fuzer" src={Fuzer} width={40} height={40} />
         </Stack>
@@ -156,7 +156,13 @@ export default function Page() {
               height: '90%',
               gap: 1,
               alignItems: 'flex-start',
-              marginTop: '2rem'
+              marginTop: '2rem',
+              border: 0,
+              borderRadius: '1rem',
+              padding: '1rem',
+              justifyContent: 'center',
+              background: 'linear-gradient(180deg,#6e0000,#330000)',
+              boxShadow: 10
             }}
           >
             {dota2Heroes.map(hero => (
@@ -172,20 +178,24 @@ export default function Page() {
             ))}
           </Stack>
         </Stack>
-        <Button
-          variant="contained"
-          disabled={game1Bans.length === 0 && game2Bans.length === 0}
-          sx={{
-            width: '20%',
-            margin: 5,
-            backgroundColor: 'whitesmoke',
-            color: 'black',
-            marginTop: 'auto'
-          }}
-          onClick={clearAll}
-        >
-          <Typography fontWeight="bold">{'Clear all'}</Typography>
-        </Button>
+        <Stack spacing={0.5} alignItems="center">
+          <Button
+            variant="contained"
+            disabled={game1Bans.length === 0 && game2Bans.length === 0}
+            sx={{
+              width: '20rem',
+              marginTop: 'auto',
+              backgroundColor: 'whitesmoke',
+              color: 'black'
+            }}
+            onClick={clearAll}
+          >
+            <Typography fontWeight="bold">{'Clear all'}</Typography>
+          </Button>
+          <Typography variant="h6" color="whitesmoke">
+            {'from maisteridota with ❤️'}
+          </Typography>
+        </Stack>
       </Stack>
     </Container>
   )

@@ -52,7 +52,8 @@ const Bancolumn = ({
           background: bgTransparency
             ? 'transparent'
             : 'linear-gradient(180deg,#6e0000,#330000)',
-          borderRadius: '0.6rem'
+          borderRadius: '0.6rem',
+          boxShadow: bgTransparency ? 0 : 10
         }}
         width={120}
         height={'105%'}
@@ -114,11 +115,11 @@ const Banslot = ({
   return (
     <Box
       sx={{
-        boxShadow: 3,
         height: 50,
         position: 'relative',
         overflow: 'hidden',
-        borderRadius: '0.3rem'
+        borderRadius: '0.4rem',
+        border: 2
       }}
     >
       {hero ? (

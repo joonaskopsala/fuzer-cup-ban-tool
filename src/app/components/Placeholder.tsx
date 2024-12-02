@@ -13,7 +13,7 @@ const PlaceholderImage = () => {
         borderRadius: 1
       }}
     >
-      <Typography variant="h6" color="text.primary">
+      <Typography variant="h6" fontWeight="bold" color="text.primary">
         ?
       </Typography>
     </Box>
